@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   username: string = '';
   password: string = '';
+  loading: boolean = false;
 
   constructor(private toast: ToastrService,
     private _userService: UserService,
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
       username: this.username,
       password: this.password
     }
-    console.log(login);
+   
+    this.loading = true;
     this._userService.login(login).subscribe({
       next: (token) => {
        
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
       },
       error: (e: HttpErrorResponse) => {
         this._errorService.msjError(e);
-        
+        this.loading=false;
       }
     })
 }

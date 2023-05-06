@@ -1,0 +1,38 @@
+main{
+    
+    display: grid;
+    gap: 10px;
+    grid-template-areas:
+            /* "header header header header header header" */
+            "section section section section section section"
+            "pie pie pie pie pie pie";
+    row-gap: 0;
+    column-gap: 0;
+    grid-template-rows: 100%;
+    height: 92vh;
+
+}
+
+/* header {
+    background: #020a14;
+    grid-area: header;
+       
+} */
+
+section {
+    
+    display: grid;
+    grid-area: section;
+    grid-template-areas: repeat(auto-fit, minmax(250px, 1fr));    
+    overflow-y: auto;
+
+}
+  footer {
+
+    grid-area: pie; 
+    background: #020a14;
+    color: #ffffffd0;
+    height: 50px;
+
+
+}

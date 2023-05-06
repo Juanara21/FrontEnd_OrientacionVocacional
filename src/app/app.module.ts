@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { SinginComponent } from './singin/singin.component';
+import { SigninComponent } from './singin/singin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from "ngx-toastr";
@@ -14,12 +14,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { AuthGuard } from "./utils/auth.guard";
 
 const appRoutes: Routes = [
  
-  { path:'dashboard',component:DashboardComponent},
+  { path:'', redirectTo: 'login', pathMatch: 'full'},
   { path:'login',component:LoginComponent},
-  { path:'signIn',component:SinginComponent}
+  { path:'signIn',component:SigninComponent},
+  { path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
   
   
   ];
@@ -29,8 +35,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    SinginComponent,
-    DashboardComponent
+    SigninComponent,
+    DashboardComponent,
+    FooterComponent,
+    HeaderComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

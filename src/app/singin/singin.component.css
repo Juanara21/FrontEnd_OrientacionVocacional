@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    background-color: #f5f5f5;
+    
+}
+
+.wrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100%;
+    
+    
+    
+}
+h3{
+    font-weight: bold;
+    color: rgb(255, 208, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    
+   
+}
+
+.logo {
+    height: 130px;
+    margin-bottom: 10px;
+}
+
+.body {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: 20px;
+  
+}
