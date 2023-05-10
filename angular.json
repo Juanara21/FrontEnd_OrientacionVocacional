@@ -27,8 +27,10 @@
             "styles": [
               "src/custom-theme.scss",
               "src/styles.css",
-              "node_modules/bootswatch/dist/journal/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/bootswatch/dist/materia/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css"
+              
             ],
             "scripts": []
           },

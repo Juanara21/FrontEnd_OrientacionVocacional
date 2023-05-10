@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="false">
+    <mat-toolbar style="font-weight: bold; color: #377dfd; font-size: 20px;" class="m-2">Administrador</mat-toolbar>
+    <mat-nav-list class="iconos">
+      <a mat-list-item [routerLink]="['/dashboard/header']"><i class="bi bi-card-list m-2"></i>Agregar Carreras</a>
+      <a mat-list-item href="#"><i class="bi bi-card-checklist m-2"></i>Agregar Preguntas</a>
+      <a mat-list-item href="#"><i class="bi bi-person-lines-fill m-2"></i>Administrar Usuarios</a>
+      <a mat-list-item href="#"><i class="bi bi-bar-chart-line-fill m-2"></i>Reportes</a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" style="background-color: #377dfd;" class="d-flex justify-content-between">
+     
+      
+      <!-- <div style="width: 100%;"> -->
+        <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+         </button>
+          <span  class="d-flex" style="font-weight: bold; font-size: 20px;" >BIENVENIDOS</span>
+        <i class="bi bi-box-arrow-in-left" style="font-size: 30px;" (click)="logOut()"></i>
+      <!-- </div> -->
+     
+     
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+ 
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>

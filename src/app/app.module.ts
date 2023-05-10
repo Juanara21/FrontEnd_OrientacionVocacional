@@ -13,19 +13,32 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
-import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AuthGuard } from "./utils/auth.guard";
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const appRoutes: Routes = [
  
   { path:'', redirectTo: 'login', pathMatch: 'full'},
-  { path:'login',component:LoginComponent},
+  { path:'login',component:LoginComponent},  
   { path:'signIn',component:SigninComponent},
-  { path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
-  { path: '**', redirectTo: 'login', pathMatch: 'full' }
+  { path:'dashboard',component:SidenavComponent , canActivate:[AuthGuard], children: [
+    { path:'header',component:HeaderComponent}
+  ]},
+  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
   
   
   ];
@@ -36,10 +49,13 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     SigninComponent,
-    DashboardComponent,
+  
     FooterComponent,
     HeaderComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SidenavComponent,
+  
+ 
   ],
   imports: [
     BrowserModule,
@@ -59,6 +75,14 @@ const appRoutes: Routes = [
      
     }),
     HttpClientModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
 
   ],
   providers: [],

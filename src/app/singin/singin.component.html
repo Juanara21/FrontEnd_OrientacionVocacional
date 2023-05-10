@@ -1,68 +1,82 @@
-<div class="wrapper">
-    <div  class="body">
-        <img class="logo" src="../../../assets/login.png" alt="img login">
-        <h3>Registrar Usuario</h3>
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" [(ngModel)]="username" class="form-control" placeholder="Ingrese usuario">
-            <label>Usuario</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese password">
-            <label>Password</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Ingrese password de nuevo">
-            <label>Repetir Password</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" [(ngModel)]="primer_nombre" class="form-control" placeholder="Ingrese primer nombre">
-            <label>Primer Nombre</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" [(ngModel)]="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre">
-            <label>Segundo Nombre</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" [(ngModel)]="primer_apellido" class="form-control" placeholder="Ingrese primer apellido">
-            <label>Primer Apellido</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-            <input type="text" [(ngModel)]="segundo_apellido" class="form-control" placeholder="Ingrese segundo apellido">
-            <label>Segundo Apellido</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-            <input type="email" [(ngModel)]="email" class="form-control" placeholder="Ingrese correo electrónico">
-            <label>Correo Electrónico</label>
-            <div class="form-floating mb-3 mt-3">
-                <select [(ngModel)]="tipo_identificacion" class="form-select">
-                  <option value="">---Seleccione---</option>
-                  <option value="Cédula">Cédula</option>
-                  <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                  <option value="Pasaporte">Pasaporte</option>
-                  <option value="Otro">Otro</option>
-                </select>
-                <label for="floatingSelect">Tipo de Identificación</label>
-              </div>
-              
-        <div class="form-floating mb-3 mt-3">
-            <input type="number" [(ngModel)]="identificacion" class="form-control" placeholder="Ingrese número de identificación">
-            <label>Número de Identificación</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-            <select [(ngModel)]="sexo" class="form-select">
-                <option value="">---Seleccione---</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-                <option value="No definido">No definido</option>
-                <option value="Otro">Otro</option>
-            </select>
-            <label for="floatingSelect">Sexo</label>
-          </div>
+<div class="d-flex flex-column">
+    <div class="wrapper">
         
-        <div class="d-grid gap-2 mb-3">
-            <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">Aceptar</button>
+        <div  class="body">
+            <img class="logo" src="../../../assets/login.png" alt="img login">
+            <h3>Registrar Usuario</h3>
+           
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" [(ngModel)]="username" class="form-control" placeholder="Ingrese usuario">
+                <label>Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese password">
+                <label>Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Ingrese password de nuevo">
+                <label>Repetir Password</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" [(ngModel)]="primer_nombre" class="form-control" placeholder="Ingrese primer nombre">
+                <label>Primer Nombre</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" [(ngModel)]="segundo_nombre" class="form-control" placeholder="Ingrese segundo nombre">
+                <label>Segundo Nombre</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" [(ngModel)]="primer_apellido" class="form-control" placeholder="Ingrese primer apellido">
+                <label>Primer Apellido</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <input type="text" [(ngModel)]="segundo_apellido" class="form-control" placeholder="Ingrese segundo apellido">
+                <label>Segundo Apellido</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <input type="email" [(ngModel)]="email" class="form-control" placeholder="Ingrese correo electrónico">
+                <label>Correo Electrónico</label>
+                <div class="form-floating mb-3 mt-3">
+                    <select [(ngModel)]="tipo_identificacion" class="form-select">
+                      <option value="">---Seleccione---</option>
+                      <option value="Cédula">Cédula</option>
+                      <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                      <option value="Pasaporte">Pasaporte</option>
+                      <option value="Otro">Otro</option>
+                    </select>
+                    <label for="floatingSelect">Tipo de Identificación</label>
+                </div>
+            </div>
+            
+                  
+            <div class="form-floating mb-3 mt-3">
+                <input type="number" [(ngModel)]="identificacion" class="form-control" placeholder="Ingrese número de identificación">
+                <label>Número de Identificación</label>
+            </div>
+            <div class="form-floating mb-3 mt-3">
+                <select [(ngModel)]="sexo" class="form-select">
+                    <option value="">---Seleccione---</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="No definido">No definido</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <label for="floatingSelect">Sexo</label>
+              </div>
+            
+            <div class="d-grid gap-2 mb-3">
+                <button type="submit" style="  font-family: Arial, Helvetica, sans-serif;" (click)="addUser()" class="btn btn-primary btn-lg">Registrarse</button>
+            </div>
+       
+            <p>¿Ya tienes cuenta? <a routerLink="/login">Iniciar sesión</a></p>
         </div>
-        <p>¿Ya tienes cuenta? <a routerLink="/login">Iniciar sesión</a></p>
-    </div>
-    <app-spinner *ngIf="loading"></app-spinner>
+        <app-spinner *ngIf="loading"></app-spinner>
+        
 </div>
+    
+    <div>
+        <app-footer></app-footer>
+    </div>
+   
+</div>
+
