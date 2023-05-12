@@ -6,6 +6,7 @@ import { UserService } from "src/app/servicios/user.service";
 import { ToastrService } from "ngx-toastr";
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from '../servicios/error_service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -41,9 +42,23 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this._userService.login(login).subscribe({
       next: (token) => {
+
+        localStorage.setItem('token', token);
+        const decodedToken = jwt_decode<any>(token);
+        const rol = decodedToken.rol;
+
+     if (rol === 'admin') {
+        // Redirigir a la ruta de administrador
+        this.router.navigate(['/dashboard']);
+        return;
+    } else if (rol === 'user') {
+        // Redirigir a la ruta de usuario
+        this.router.navigate(['/dashboardUser']);
+        return;
+    }
        
-      localStorage.setItem('token', token);
-      this.router.navigate(['/dashboard']);
+     
+     
       },
       error: (e: HttpErrorResponse) => {
         this._errorService.msjError(e);

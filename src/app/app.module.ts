@@ -22,21 +22,27 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { JwtModule } from '@auth0/angular-jwt';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { SidenavuserComponent } from './sidenavuser/sidenavuser.component';
+import { CuestionarioComponent } from './cuestionario/cuestionario.component';
+import { RoleGuardGuard } from './utils/role-guard.guard';
 
 const appRoutes: Routes = [
  
   { path:'', redirectTo: 'login', pathMatch: 'full'},
   { path:'login',component:LoginComponent},  
   { path:'signIn',component:SigninComponent},
-  { path:'dashboard',component:SidenavComponent , canActivate:[AuthGuard], children: [
+  { path:'dashboard',component:SidenavComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
     { path:'header',component:HeaderComponent}
+  ]},
+  { path:'dashboardUser',component:SidenavuserComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
+    { path:'cuestionario',component:CuestionarioComponent}
   ]},
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
   
@@ -54,6 +60,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     SpinnerComponent,
     SidenavComponent,
+    SidenavuserComponent,
   
  
   ],
@@ -83,6 +90,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    JwtModule
 
   ],
   providers: [],
