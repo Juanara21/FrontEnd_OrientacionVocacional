@@ -33,6 +33,7 @@ import { SidenavuserComponent } from './sidenavuser/sidenavuser.component';
 import { CuestionarioComponent } from './cuestionario/cuestionario.component';
 import { RoleGuardGuard } from './utils/role-guard.guard';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
  
@@ -91,7 +92,9 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    JwtModule
+    JwtModule,
+    NgbModule,
+    
 
   ],
   providers: [
