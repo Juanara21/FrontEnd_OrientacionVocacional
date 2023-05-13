@@ -32,6 +32,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { SidenavuserComponent } from './sidenavuser/sidenavuser.component';
 import { CuestionarioComponent } from './cuestionario/cuestionario.component';
 import { RoleGuardGuard } from './utils/role-guard.guard';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 const appRoutes: Routes = [
  
@@ -93,7 +94,10 @@ const appRoutes: Routes = [
     JwtModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+ 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
