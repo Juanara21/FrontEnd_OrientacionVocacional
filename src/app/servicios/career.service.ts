@@ -14,7 +14,7 @@ export class CareerService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl =  'http://localhost:3001/';
-    this.myApiUrl = 'api/career';
+    this.myApiUrl = 'api/career/';
    }
 
    newCareer(career: Career): Observable<any> {
