@@ -23,7 +23,8 @@ export class PreguntasAdminComponent implements OnInit{
   dataSource!: MatTableDataSource<any>;
   nuevaQuestion: string = '';
   updatedQuestion: string = '';
-  selectedCareerId: number | null = null;
+  selectedCareerId: number = 0;
+
 
   
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
@@ -75,7 +76,7 @@ export class PreguntasAdminComponent implements OnInit{
       })
     }
 
-    addCareer() {
+    addQuestion() {
 
       // Validamos que el usuario ingrese valores
       if (this.nuevaQuestion == '' ) {
@@ -85,13 +86,15 @@ export class PreguntasAdminComponent implements OnInit{
       // Creamos el objeto
       const question: Question = {
         descripcion: this.nuevaQuestion,
-        CareerId: 0
+        CareerId: this.selectedCareerId
       }
   
       this._questionService.newQuestion(question).subscribe({
         next: (v) => {
          
+          
           this.toastr.success(`La Pregunta ${this.nuevaQuestion} fue registrada con exito`, 'Pregunta registrada');
+          this.obtenerQuestion();
          
         },
         error: (e: HttpErrorResponse) => {
@@ -99,17 +102,67 @@ export class PreguntasAdminComponent implements OnInit{
         }
       })
     }
+
+    updateQuestion(id: number) {
+      
+      if (this.updatedQuestion == '' ) {
+        this.toastr.error('Todos los campos son obligatorios', 'Error');
+        return;
+      }
+
+      const question: Question = {         
+        descripcion: this.updatedQuestion,
+        CareerId: this.selectedCareerId,
+      }
+       
+      this._questionService.updateQuestion(id,question).subscribe(
+        () => {
+          this.toastr.success(`La pregunta ${this.updatedQuestion} fue actualizada con éxito`, 'pregunta actualizada');
+          this.obtenerQuestion();     
+        },
+        (error: HttpErrorResponse) => {
+          this._errorService.msjError(error);
+        }
+      );
+    }
   
 
 
+    openUpdateModal(content: any, questionId: number) {
+
+      this.updatedQuestion = '';  
+      // Buscar la carrera en la lista por el ID
+      const question = this.listQuestion.find(c => c.id === questionId);
+      if (question) {
+      this.updatedQuestion = question.descripcion;
+      this.selectedCareerId = question.CareerId;
+      } 
+  
+     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+          (result) => {
+        
+  
+       this.updateQuestion(questionId);
+       
+  
+        this.updatedQuestion = '';
+            
+            // Maneja el cierre del modal si es necesario
+            this.closeResult = `Closed with: ${result}`;
+          },
+          (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          }
+        );
+      
+    }
     open(content:any) {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then(
         (result) => {
-        this.addCareer();
-  
-        this.obtenerQuestion();
-  
+        this.addQuestion();
+
         this.nuevaQuestion = '';
+        this.selectedCareerId = 0;
   
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {

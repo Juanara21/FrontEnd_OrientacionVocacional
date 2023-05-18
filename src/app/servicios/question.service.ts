@@ -29,6 +29,6 @@ export class QuestionService {
    }
  
    updateQuestion(id: number, question: Question): Observable<void> {
-     return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, question);
+     return this.http.patch<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, question);
    }
 }
