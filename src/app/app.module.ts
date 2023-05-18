@@ -35,6 +35,7 @@ import { RoleGuardGuard } from './utils/role-guard.guard';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreguntasAdminComponent } from './preguntas-admin/preguntas-admin.component';
+import { UsuariosAdminComponent } from './usuarios-admin/usuarios-admin.component';
 
 const appRoutes: Routes = [
  
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   { path:'signIn',component:SigninComponent},
   { path:'dashboard',component:SidenavComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
     { path:'header',component:HeaderComponent},
-    { path:'questionAdmin',component:PreguntasAdminComponent}
+    { path:'questionAdmin',component:PreguntasAdminComponent},
+    { path:'userAdmin',component:UsuariosAdminComponent},
   ]},
   { path:'dashboardUser',component:SidenavuserComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
     { path:'cuestionario',component:CuestionarioComponent}
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
     SidenavComponent,
     SidenavuserComponent,
     PreguntasAdminComponent,
+    UsuariosAdminComponent,
   
  
   ],
