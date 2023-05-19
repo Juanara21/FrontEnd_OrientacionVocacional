@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
+import { Password } from '../interfaces/changePassword';
 
 import { Observable } from "rxjs";
 
@@ -22,4 +23,7 @@ export class PersonasService {
    obtenerUsernameUser(username: string): Observable<User> {
     return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}user/${username}`);
    }
+   changePasswor( password: Password, username: string): Observable<void> {
+    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}user/${username}`,password);
+  }
 }

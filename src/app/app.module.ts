@@ -40,7 +40,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
  
-  { path:'', redirectTo: 'login', pathMatch: 'full'},
+  { path:'', redirectTo: 'dashboard', pathMatch: 'full'},
   { path:'login',component:LoginComponent},  
   { path:'signIn',component:SigninComponent},
   { path:'dashboard',component:SidenavComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [

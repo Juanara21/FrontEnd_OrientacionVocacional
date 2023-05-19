@@ -62,8 +62,36 @@
       <button type="button" class="btn btn-success m-2" *ngIf="editable">
         Actualizar
       </button>
-      <button type="button" class="btn btn-warning  m-2" >
+      <button type="button" class="btn btn-warning  m-2" (click)="openUpdateModal(contentUpdate)" >
         Cambiar Contraseña
       </button>
 </div>
+
+<ng-template #contentUpdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Actualizar Contraseña</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="firstname">Contraseña Actual:</label>
+        <div class="input-group">
+        <input id="contraseñaActual" class="form-control" name="contraseñaActual" [(ngModel)]="contrasenaActual">
+      </div>     
+      </div>
+        <div class="form-group">
+          <label for="firstname">Contraseña Nueva:</label>
+          <div class="input-group">
+          <input id="contraseñaActual" class="form-control" name="contraseñaNueva" [(ngModel)]="contrasenaNueva">
+        </div>      
+      </div>
+     </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Cambiar</button>
+  </div>
+</ng-template>
 

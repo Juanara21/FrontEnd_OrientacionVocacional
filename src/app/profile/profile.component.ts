@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from 'src/app/servicios/error_service';
 import { User } from '../interfaces/user';
+import { Password } from '../interfaces/changePassword';
 import jwt_decode from 'jwt-decode';
 
 @Component({
@@ -15,7 +16,10 @@ import jwt_decode from 'jwt-decode';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
-
+  closeResult!: string;
+  contrasenaNueva: string = '';
+  contrasenaActual: string = '';
+  password!: Password;
   editable: boolean = false;
   listUser!: User;
   primer_nombre: string = '';
@@ -42,14 +46,15 @@ export class ProfileComponent implements OnInit{
     private modalService: NgbModal,
     private _errorService: ErrorService ) { }
 
-  
-  obtenerUser() { 
-
-    
-    const token = localStorage.getItem('token') ?? '';
-    
+  obtenerUsername() {
+    const token = localStorage.getItem('token') ?? '';    
     const decodedToken: any = jwt_decode(token);
-    const usuario = decodedToken.username;    
+    const usuario = decodedToken.username;
+    return usuario
+  }
+  
+  obtenerUser() {  
+    const usuario = this.obtenerUsername();
 
     this._personasService.obtenerUsernameUser(usuario).subscribe((data: User) => {
     this.listUser = data
@@ -67,5 +72,59 @@ export class ProfileComponent implements OnInit{
   })
 }
 
+updatePassword() {
+
+  const usuario = this.obtenerUsername();
+      
+  if (this.contrasenaNueva == '' || this.contrasenaActual == '' ) {
+    this.toastr.error('Todos los campos son obligatorios', 'Error');
+    return;
+  }
+
+  const password: Password = {         
+    oldPassword: this.contrasenaActual,
+    newPassword: this.contrasenaNueva,
+  }
+   
+  this._personasService.changePasswor(password, usuario).subscribe(
+    () => {
+      this.toastr.success(`La contraseña fue actualizada con éxito`, 'Contraseña actualizada');
+          
+    },
+    (error: HttpErrorResponse) => {
+      this._errorService.msjError(error);
+    }
+  );
+}
+
+
+openUpdateModal(content: any) {
+
+   this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+    
+        this.updatePassword()
+
+        this.contrasenaActual = '';
+        this.contrasenaNueva = '';
+            
+        // Maneja el cierre del modal si es necesario
+        this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
   
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+} 
 }
