@@ -26,4 +26,7 @@ export class PersonasService {
    changePasswor( password: Password, username: string): Observable<void> {
     return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}user/${username}`,password);
   }
+  updateUser(user: User,  username: string):  Observable<void> {
+    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${username}`,user);
+   }
 }
