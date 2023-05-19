@@ -1,0 +1,69 @@
+<div class="container p-5">
+    <h2 class="mb-4 text-primary" >Datos Personales</h2>
+    <form class="d-flex justify-content-start align-content-center flex-wrap" >
+    
+        <div class="form-group m-2">
+          <label for="primer_nombre">Primer Nombre:</label>
+          <input type="text" class="form-control" id="primer_nombre" [(ngModel)]="primer_nombre"   name="primer_nombre" [readonly]="!editable" >
+        </div>
+      
+        <div class="form-group m-2">
+          <label for="segundo_nombre">Segundo Nombre:</label>
+          <input type="text" class="form-control" id="segundo_nombre" [(ngModel)]="segundo_nombre" name="segundo_nombre" [readonly]="!editable">
+        </div>
+      
+        <div class="form-group m-2">
+          <label for="primer_apellido">Primer Apellido:</label>
+          <input type="text" class="form-control" id="primer_apellido" [(ngModel)]="primer_apellido" name="primer_apellido" [readonly]="!editable">
+        </div>
+      
+        <div class="form-group m-2">
+          <label for="segundo_apellido">Segundo Apellido:</label>
+          <input type="text" class="form-control" id="segundo_apellido" [(ngModel)]="segundo_apellido" name="segundo_apellido" [readonly]="!editable">
+        </div>
+      
+        <div class="form-group m-2">
+          <label for="email">Correo electrónico:</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" [readonly]="!editable">
+        </div>
+      
+        <div class="form-group m-2">
+            <label for="sexo">Tipo de identificacion:</label>
+            <select [(ngModel)]="tipo_identificacion" class="form-control mt-3" name="tipo_identificacion" [disabled]="!editable">
+                <option value="">---Seleccione---</option>
+                <option value="Cédula">Cédula</option>
+                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                <option value="Pasaporte">Pasaporte</option>
+                <option value="Otro">Otro</option>
+              </select>
+       </div>
+      
+        <div class="form-group m-2">
+          <label for="identificacion">Identificación:</label>
+          <input type="number" class="form-control" id="identificacion" [(ngModel)]="identificacion" name="identificacion" [readonly]="!editable">
+        </div>
+      
+        <div class="form-group m-2">
+          <label for="sexo">Sexo:</label>
+          <select class="form-control mt-3" id="sexo" [(ngModel)]="sexo" name="sexo" [disabled]="!editable" >
+            <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="No definido">No definido</option>
+                    <option value="Otro">Otro</option>
+         </select>
+        </div>
+       
+    </form>
+    <button type="button" class="btn btn-primary m-2" (click)="editable = true" [disabled]="editable">
+        Editar
+      </button>
+      
+      <!-- Botón Actualizar -->
+      <button type="button" class="btn btn-success m-2" *ngIf="editable">
+        Actualizar
+      </button>
+      <button type="button" class="btn btn-warning  m-2" >
+        Cambiar Contraseña
+      </button>
+</div>
+

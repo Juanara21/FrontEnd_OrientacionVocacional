@@ -13,10 +13,13 @@ export class PersonasService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl =  'http://localhost:3001/';
-    this.myApiUrl = 'api/users';
+    this.myApiUrl = 'api/users/';
    }
 
    obtenerUser(): Observable<User[]> {
     return this.http.get<User[]>(`${this.myAppUrl}${this.myApiUrl}`);
+   }
+   obtenerUsernameUser(username: string): Observable<User> {
+    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}user/${username}`);
    }
 }
