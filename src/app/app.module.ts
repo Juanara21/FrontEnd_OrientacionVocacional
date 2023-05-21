@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
-
+import {MatRadioModule} from '@angular/material/radio';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -30,13 +30,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { SidenavuserComponent } from './sidenavuser/sidenavuser.component';
-import { CuestionarioComponent } from './cuestionario/cuestionario.component';
+
 import { RoleGuardGuard } from './utils/role-guard.guard';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PreguntasAdminComponent } from './preguntas-admin/preguntas-admin.component';
 import { UsuariosAdminComponent } from './usuarios-admin/usuarios-admin.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TestComponent } from './test/test.component';
 
 const appRoutes: Routes = [
  
@@ -49,9 +50,8 @@ const appRoutes: Routes = [
     { path:'userAdmin',component:UsuariosAdminComponent},
   ]},
   { path:'dashboardUser',component:SidenavuserComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
-    { path:'cuestionario',component:CuestionarioComponent},
-    { path:'miperfil',component:ProfileComponent}
-    
+    { path:'miperfil',component:ProfileComponent},
+    { path:'test',component:TestComponent},  
   ]},
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
   
@@ -73,6 +73,7 @@ const appRoutes: Routes = [
     PreguntasAdminComponent,
     UsuariosAdminComponent,
     ProfileComponent,
+    TestComponent,
   
  
   ],
@@ -104,6 +105,7 @@ const appRoutes: Routes = [
     MatSortModule,
     JwtModule,
     NgbModule,
+    MatRadioModule,
     
 
   ],
