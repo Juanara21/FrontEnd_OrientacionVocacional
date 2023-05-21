@@ -1,13 +1,13 @@
-<div class="container m-3">
-  <div *ngFor="let pregunta">
+<div class="container">
+  <div *ngFor="let pregunta of listQuestion" class="form-group m-5">
     <p>{{ pregunta.descripcion }}</p>
     <ul>
-      <li>
-        <input type="radio" name="respuesta{{ pregunta.id }}" value="1" (change)="capturarRespuesta(pregunta.id, 1)">
+      <li style="list-style-type: none;">
+        <input type="radio" name="respuesta" value="1">
         Estoy de acuerdo
       </li>
-      <li>
-        <input type="radio" name="respuesta{{ pregunta.id }}" value="0" (change)="capturarRespuesta(pregunta.id, 0)">
+      <li style="list-style-type: none;">
+        <input type="radio" name="respuesta" value="0">
         No estoy de acuerdo
       </li>
     </ul>

@@ -6,9 +6,13 @@
     margin-bottom: 5px;
   }
 
+.container{
+    max-width: 100%;
+}
+
 .question-separator {
     border: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #c7c7c7;
     margin: 20px 0;
   }
   
