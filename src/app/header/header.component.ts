@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit {
 
     this._careerService.newCareer(career).subscribe({
       next: (v) => {
-       
+        this.obtenerCareer();
         this.toastr.success(`La Carrera ${this.nuevaCarrera} fue registrada con exito`, 'Carrera registrada');
        
       },
@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
       (result) => {
       this.addCareer();
 
-      this.obtenerCareer();
+     
 
       this.nuevaCarrera = '';
 
