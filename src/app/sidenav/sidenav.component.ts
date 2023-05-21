@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
 
-  
+  loading: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,8 +22,11 @@ export class SidenavComponent {
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
 
   logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login'])
+    this.loading = true;
+    localStorage.removeItem('token');    
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 500);
   }
 
 }

@@ -13,6 +13,7 @@ import jwt_decode from 'jwt-decode';
 export class SidenavuserComponent implements OnInit {
 
   nombreUsuario: String = '';
+  loading: boolean = false;
 
   ngOnInit() {
     this.obtenerUsername();
@@ -30,8 +31,11 @@ export class SidenavuserComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
 
   logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login'])
+    this.loading = true;
+    localStorage.removeItem('token');    
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 500);
   }
 
   obtenerUsername() {

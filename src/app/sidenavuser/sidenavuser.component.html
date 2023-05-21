@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" >
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -6,8 +6,7 @@
     <mat-toolbar style="font-weight: bold; color: #377dfd; font-size: 20px;" class="m-2"> <span style="color: black;" class="m-1">Hola, </span>  {{ nombreUsuario }}</mat-toolbar>
     <mat-nav-list class="iconos">
       <a mat-list-item [routerLink]="['/dashboardUser/miperfil']"><i class="bi bi-person-lines-fill m-2"></i>Mi Perfil</a>
-      <a mat-list-item href="#"><i class="bi bi-card-checklist m-2"></i>Agregar Preguntas</a>
-      <a mat-list-item href="#"><i class="bi bi-card-list m-2"></i>Administrar Usuarios</a>
+      <a mat-list-item href="#"><i class="bi bi-ui-checks m-2"></i>Test</a>
       <a mat-list-item href="#"><i class="bi bi-bar-chart-line-fill m-2"></i>Reportes</a>
       
     </mat-nav-list>
@@ -31,9 +30,13 @@
      
     </mat-toolbar>
 
+    <app-spinner class="d-flex  justify-content-center align-items-center" *ngIf="loading" ></app-spinner>
+     
     <router-outlet></router-outlet>
+   
  
 
   </mat-sidenav-content>
 </mat-sidenav-container>
+
 <app-footer></app-footer>

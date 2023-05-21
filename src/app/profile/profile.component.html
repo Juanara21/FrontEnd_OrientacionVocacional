@@ -54,12 +54,12 @@
         </div>
        
     </form>
-    <button type="button" class="btn btn-primary m-2" (click)="editable = true" [disabled]="editable">
+    <button type="button" class="btn btn-primary m-2" (click)="editable = true" *ngIf="!editable">
         Editar
       </button>
       
       <!-- Botón Actualizar -->
-      <button type="button" class="btn btn-success m-2" *ngIf="editable">
+      <button type="button" class="btn btn-success m-2" *ngIf="editable"  (click)="updateUser()">
         Actualizar
       </button>
       <button type="button" class="btn btn-warning  m-2" (click)="openUpdateModal(contentUpdate)" >
@@ -79,13 +79,13 @@
       <div class="form-group">
         <label for="firstname">Contraseña Actual:</label>
         <div class="input-group">
-        <input id="contraseñaActual" class="form-control" name="contraseñaActual" [(ngModel)]="contrasenaActual">
+        <input type="password" id="contraseñaActual" class="form-control" name="contraseñaActual" [(ngModel)]="contrasenaActual">
       </div>     
       </div>
         <div class="form-group">
           <label for="firstname">Contraseña Nueva:</label>
           <div class="input-group">
-          <input id="contraseñaActual" class="form-control" name="contraseñaNueva" [(ngModel)]="contrasenaNueva">
+          <input type="password" id="contraseñaActual" class="form-control" name="contraseñaNueva" [(ngModel)]="contrasenaNueva">
         </div>      
       </div>
      </form>

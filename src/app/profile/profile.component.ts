@@ -97,6 +97,45 @@ updatePassword() {
   );
 }
 
+updateUser() {
+
+  const usuario = this.obtenerUsername();
+  // Validamos que el usuario ingrese valores
+  if (this.primer_nombre == ''||  this.primer_apellido == '' || this.segundo_apellido == '' || this.email == '' || this.tipo_identificacion == '' || this.identificacion == 0 || this.sexo == '' ) {
+    this.toastr.error('Todos los campos son obligatorios', 'Error');
+    return;
+  }
+
+  
+
+  // Creamos el objeto
+  const user: User = {
+   
+    primer_nombre: this.primer_nombre,
+    segundo_nombre: this.segundo_nombre,
+    primer_apellido: this.primer_apellido,
+    segundo_apellido: this.segundo_apellido,
+    email: this.email,
+    tipo_identificacion: this.tipo_identificacion,
+    identificacion: this.identificacion,
+    sexo: this.sexo
+  }
+
+  this._personasService.updateUser(user, usuario ).subscribe({
+    next: (v) => {
+     
+      this.toastr.success(`El usuario ${usuario} fue actualizado con exito`, 'Usuario actualizado');
+      this.obtenerUsername();
+      this.editable = false;
+    },
+    error: (e: HttpErrorResponse) => {
+     
+      this._errorService.msjError(e);
+    }
+  })
+}
+
+
 
 openUpdateModal(content: any) {
 

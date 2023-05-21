@@ -1,6 +1,6 @@
 export interface User {
-    username: string,
-    password: string,
+    username?: string,
+    password?: string,
     primer_nombre: string,
     segundo_nombre: string,
     primer_apellido: string,
