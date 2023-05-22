@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="container mt-3 mb-2 w-100">
+    <h5 class="bs-primary d-flex justify-content-start fw-bold text-primary ">Administrar las preguntas</h5>
+    <p class="fst-italic text-info-emphasis fs-10 mb-1 text-start">"A continuación encontrarás la lista de preguntas disponibles, ahí mismo podras agregar, editarlas o eliminarlas"</p>
+  
+  </div>
     <div class="container">
         <div class="demo-button-container">
             <button mat-raised-button (click)="open(content)" class="demo-button m-2">
@@ -6,7 +11,7 @@
             </button>
        </div>
       </div>
-<div class="container m-2">
+ <div class="mat-elevation-z8 mat-table-responsive mb-3">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Column definitions -->
         <ng-container matColumnDef="id">

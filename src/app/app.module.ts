@@ -38,6 +38,7 @@ import { PreguntasAdminComponent } from './preguntas-admin/preguntas-admin.compo
 import { UsuariosAdminComponent } from './usuarios-admin/usuarios-admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TestComponent } from './test/test.component';
+import { ReportesUserComponent } from './reportes-user/reportes-user.component';
 
 const appRoutes: Routes = [
  
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     { path:'header',component:HeaderComponent},
     { path:'questionAdmin',component:PreguntasAdminComponent},
     { path:'userAdmin',component:UsuariosAdminComponent},
+    { path:'reportesAdmin',component:ReportesUserComponent },
   ]},
   { path:'dashboardUser',component:SidenavuserComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
     { path:'miperfil',component:ProfileComponent},
@@ -74,6 +76,7 @@ const appRoutes: Routes = [
     UsuariosAdminComponent,
     ProfileComponent,
     TestComponent,
+    ReportesUserComponent,
   
  
   ],

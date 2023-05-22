@@ -1,5 +1,5 @@
 export interface Reporte {
-    id_usuario: Number,
+    usuario_id: Number,
     primer_nombre: String,
     primer_apellido: String,
     carrera: String,
