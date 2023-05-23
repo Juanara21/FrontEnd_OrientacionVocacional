@@ -39,6 +39,7 @@ import { UsuariosAdminComponent } from './usuarios-admin/usuarios-admin.componen
 import { ProfileComponent } from './profile/profile.component';
 import { TestComponent } from './test/test.component';
 import { ReportesUserComponent } from './reportes-user/reportes-user.component';
+import { ReportesIdComponent } from './reportes-id/reportes-id.component';
 
 const appRoutes: Routes = [
  
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
   ]},
   { path:'dashboardUser',component:SidenavuserComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
     { path:'miperfil',component:ProfileComponent},
-    { path:'test',component:TestComponent},  
+    { path:'test',component:TestComponent}, 
+    { path:'reportesId',component:ReportesIdComponent },
   ]},
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
   
@@ -77,6 +79,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     TestComponent,
     ReportesUserComponent,
+    ReportesIdComponent,
   
  
   ],

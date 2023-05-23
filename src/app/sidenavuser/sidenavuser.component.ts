@@ -17,6 +17,7 @@ export class SidenavuserComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerUsername();
+    this.router.navigate(['/dashboardUser/miperfil']);
 
   }
 
@@ -29,6 +30,8 @@ export class SidenavuserComponent implements OnInit {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
+
+ 
 
   logOut() {
     this.loading = true;

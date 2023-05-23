@@ -24,6 +24,9 @@ export class ReportesService {
    obtenerMayorAfinidad(): Observable<Reporte[]> {
     return this.http.get<Reporte[]>(`${this.myAppUrl}${this.myApiUrl}user`);
    }
+   obtenerIdAfinidad(id: number): Observable<Reporte[]> {
+    return this.http.get<Reporte[]>(`${this.myAppUrl}${this.myApiUrl}${id}`);
+   }
   
  
 }
