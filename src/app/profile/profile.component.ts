@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit{
 
     this._personasService.obtenerUsernameUser(usuario).subscribe((data: User) => {
     this.listUser = data
-    console.log(this.listUser)
+    
    
     this.primer_nombre = data.primer_nombre;
     this.segundo_nombre = data.segundo_nombre;

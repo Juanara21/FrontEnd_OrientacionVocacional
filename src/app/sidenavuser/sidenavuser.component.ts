@@ -17,7 +17,7 @@ export class SidenavuserComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerUsername();
-    this.router.navigate(['/dashboardUser/miperfil']);
+    this.router.navigate(['/dashboardUser/test']);
 
   }
 

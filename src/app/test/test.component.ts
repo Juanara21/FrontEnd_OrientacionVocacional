@@ -64,22 +64,22 @@ export class TestComponent implements OnInit {
       return;
     }
    
+    else{
 
-    for (const pregunta of this.listQuestion) {
+      for (const pregunta of this.listQuestion) {
 
       if(pregunta.respuesta !== undefined && pregunta.id !== undefined){
       const answer: Answer = {
         valor: pregunta.respuesta, // Obtén el valor de la pregunta desde tu modelo de datos
         UserId: id, // Establece el valor correcto del usuario
         QuestionId: pregunta.id,// Obtén el ID de la pregunta desde tu modelo de datos
-      };
-    
-   
+      };   
 
       this._answerService.newAnswer(answer).subscribe(
         () => {
           // Respuesta enviada con éxito
           this.toastr.success('Las respuestas se agregaron con exito', 'Respuesta Agregada');
+          
         },
         (error: HttpErrorResponse) => {
           // Error al enviar la respuesta
@@ -88,6 +88,10 @@ export class TestComponent implements OnInit {
       );
      }
     }
+    this.listQuestion = [];
+    this.obtenerReportes();
+    }
+    
     
   }
     obtenerId() {
