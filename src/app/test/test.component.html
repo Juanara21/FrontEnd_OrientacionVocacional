@@ -5,6 +5,12 @@
     <p class="mt-6 mb-4 d-flex justify-content-start">Por favor, responde las siguientes preguntas:</p>
   </div>
   <hr class="question-separator">
+  <div *ngIf="showWarning" class="alert alert-dismissible alert-warning">
+  
+    <h4 class="alert-heading">Test realizado!</h4>
+    <p class="mb-0">Ya usted realizo el test de orientacion vocacional, Si desea repetirlo, comuniquese con el administrador <a [routerLink]="['/dashboardUser/reportesId']" class="alert-link">Presione aquí para ver su reporte</a>.</p>
+  </div>
+  
   <div *ngFor="let pregunta of listQuestion" class="form-group text-body m-3">
     <p class="fs-6 fw-bold" >{{ pregunta.descripcion }}</p>
     <ul>
@@ -24,4 +30,17 @@
   </div>
 </div>
 
-  
+<ng-template #contentUpdate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Test realizado</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Usted ya realizo el test, oprima el boton para ser redirecionado al reporte</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Ver Reporte</button>
+  </div>
+</ng-template>

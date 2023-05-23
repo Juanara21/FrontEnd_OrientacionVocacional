@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from '../interfaces/question';
 import { QuestionService } from '../servicios/question.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from 'src/app/servicios/error_service';
 import { AnswerService } from '../servicios/answer.service';
 import { Answer } from '../interfaces/answer';
 import jwt_decode from 'jwt-decode';
+import { ReportesService } from '../servicios/reportes.service';
+import { Reporte } from '../interfaces/reporteUser';
+
+
+
 
 @Component({
   selector: 'app-test',
@@ -17,12 +22,18 @@ import jwt_decode from 'jwt-decode';
 })
 export class TestComponent implements OnInit {
 
+  @ViewChild('contentUpdate') contentUpdate: any;
+
+  closeResult!: string;
   listQuestion: Question[] = [];
   listAnswer: Answer[] = [];
+  listReporte: Reporte[] = [];
+  public showWarning: boolean = false;
 
   ngOnInit() {
 
-    this.obtenerAnswer();
+    this. obtenerReportes();
+  
   }
 
   constructor(
@@ -31,7 +42,8 @@ export class TestComponent implements OnInit {
     private _questionService: QuestionService,
     private modalService: NgbModal,
     private _errorService: ErrorService,
-    private _answerService: AnswerService ) { }
+    private _answerService: AnswerService,
+    private _reportesService: ReportesService ) { }
 
     obtenerAnswer() {  
 
@@ -76,6 +88,7 @@ export class TestComponent implements OnInit {
       );
      }
     }
+    
   }
     obtenerId() {
       const token = localStorage.getItem('token') ?? '';    
@@ -83,4 +96,51 @@ export class TestComponent implements OnInit {
       const usuario = decodedToken.id;
       return usuario
   }
+  obtenerReportes() {     
+    const id = this.obtenerId();
+    this._reportesService.obtenerIdAfinidad(id).subscribe((data: Reporte[]) => {
+      this.listReporte = data;
+      const isEmpty = Object.keys(data).length === 0; 
+      if (isEmpty) {
+        this.obtenerAnswer();
+      } else {      
+        this.showWarning = true;
+        this.openUpdateModal(this.contentUpdate)
+
+      }   
+    });
+  }
+  
+  redireccionar() {
+      
+    this.router.navigate(['/dashboardUser/reportesId']);
+  }
+
+  openUpdateModal(content: any) {
+
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+       (result) => {
+        
+        this.redireccionar();
+              // Maneja el cierre del modal si es necesario
+         this.closeResult = `Closed with: ${result}`;
+       },
+       (reason) => {
+         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+       }
+     );
+   
+ }
+ 
+ private getDismissReason(reason: any): string {
+   if (reason === ModalDismissReasons.ESC) {
+     return 'by pressing ESC';
+   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+     return 'by clicking on a backdrop';
+   } else {
+     return `with: ${reason}`;
+   }
+ }
+  
+  
 }

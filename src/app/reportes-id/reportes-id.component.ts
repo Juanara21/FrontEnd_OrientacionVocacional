@@ -41,14 +41,20 @@ export class ReportesIdComponent implements OnInit {
   
   obtenerReportes() { 
 
+    
+
     const id = this.obtenerId();
     this._reportesService.obtenerIdAfinidad(id).subscribe((data: Reporte[]) => {
-    this.listReporte = data
-    
+    this.listReporte = data 
+    const isEmpty = Object.keys(data).length === 0;
     this.dataSource = new MatTableDataSource<Reporte>(this.listReporte);
-    this.dataSource.paginator = this.paginator;
-      
+    this.dataSource.paginator = this.paginator;  
+    if (isEmpty) {
+      this.toastr.info(`Aun no realizas el test, seras redirecionado`, 'No hay reportes');
+      this.router.navigate(['/dashboardUser/test']);
+    }    
     })
+    
     this.cambiar = false;
   }
   obtenerId() {
