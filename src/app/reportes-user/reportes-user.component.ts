@@ -43,7 +43,7 @@ export class ReportesUserComponent implements OnInit {
 
     this._reportesService.obtenerReportes().subscribe((data: Reporte[]) => {
     this.listReporte = data
-    
+  
     this.dataSource = new MatTableDataSource<Reporte>(this.listReporte);
     this.dataSource.paginator = this.paginator;
       
@@ -54,6 +54,7 @@ export class ReportesUserComponent implements OnInit {
     
     this._reportesService.obtenerMayorAfinidad().subscribe((data: Reporte[]) => {
       this.listReporte = data
+      // console.log(this.listReporte)
       
       this.dataSource = new MatTableDataSource<Reporte>(this.listReporte);
       this.dataSource.paginator = this.paginator;

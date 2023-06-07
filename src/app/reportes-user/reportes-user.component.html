@@ -33,7 +33,7 @@
 
       <ng-container matColumnDef="carrera">
         <th mat-header-cell *matHeaderCellDef> Carrera </th>
-        <td mat-cell *matCellDef="let element"> {{element.carrera}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.carrera || element.Carrera }} </td>
       </ng-container>
   
       <ng-container matColumnDef="afinidad">
