@@ -12,7 +12,7 @@ export class QuestionService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) {
-    this.myAppUrl =  'http://backendorientacionvocacional-production.up.railway.app/';
+    this.myAppUrl =  'https://backendorientacionvocacional-production.up.railway.app/';
     this.myApiUrl = 'api/question/';
    }
    newQuestion(question: Question): Observable<any> {
