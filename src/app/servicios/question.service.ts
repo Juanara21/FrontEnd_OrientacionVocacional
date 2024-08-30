@@ -12,7 +12,7 @@ export class QuestionService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) {
-    this.myAppUrl =  'http://http://localhost:3001/';
+    this.myAppUrl =   'http://localhost:3001/';
     this.myApiUrl = 'api/question/';
    }
    newQuestion(question: Question): Observable<any> {
