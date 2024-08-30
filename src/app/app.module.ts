@@ -47,6 +47,7 @@ const appRoutes: Routes = [
   { path:'login',component:LoginComponent},  
   { path:'signIn',component:SigninComponent},
   { path:'dashboard',component:SidenavComponent , canActivate:[AuthGuard,RoleGuardGuard], children: [
+    { path:'miperfil',component:ProfileComponent},
     { path:'header',component:HeaderComponent},
     { path:'questionAdmin',component:PreguntasAdminComponent},
     { path:'userAdmin',component:UsuariosAdminComponent},
