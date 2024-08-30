@@ -20,7 +20,7 @@ export class SidenavComponent implements OnInit{
     );
 
 ngOnInit(): void {
-  this.router.navigate(['/dashboard/reportesAdmin']);
+  this.router.navigate(['/dashboard/miperfil']);
 }
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
