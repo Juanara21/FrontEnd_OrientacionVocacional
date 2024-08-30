@@ -44,7 +44,7 @@ export class UsuariosAdminComponent implements OnInit {
 
     this._personasService.obtenerUser().subscribe((data: User[]) => {
     this.listUser = data.map(item => ({ ...item, actions: '' }));
-    console.log(this.listUser);
+    
     this.dataSource = new MatTableDataSource<User>(this.listUser);
     this.dataSource.paginator = this.paginator;
       
