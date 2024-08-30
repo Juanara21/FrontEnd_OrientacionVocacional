@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Question } from '../interfaces/question';
-import { QuestionService } from '../servicios/question.service';
+import { Question } from '../../interfaces/question';
+import { QuestionService } from '../../servicios/question.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from 'src/app/servicios/error_service';
-import { AnswerService } from '../servicios/answer.service';
-import { Answer } from '../interfaces/answer';
+import { AnswerService } from '../../servicios/answer.service';
+import { Answer } from '../../interfaces/answer';
 import jwt_decode from 'jwt-decode';
-import { ReportesService } from '../servicios/reportes.service';
-import { Reporte } from '../interfaces/reporteUser';
+import { ReportesService } from '../../servicios/reportes.service';
+import { Reporte } from '../../interfaces/reporteUser';
 
 
 

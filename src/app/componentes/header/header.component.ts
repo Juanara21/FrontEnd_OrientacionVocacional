@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
-import { Career } from '../interfaces/career';
-import { CareerService } from '../servicios/career.service';
+import { Career } from '../../interfaces/career';
+import { CareerService } from '../../servicios/career.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AfterViewInit,  ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';

@@ -4,14 +4,14 @@ import { ChartComponentLike } from 'chart.js';
 
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
-import { ReportesService } from '../servicios/reportes.service';
+import { ReportesService } from '../../servicios/reportes.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorService } from 'src/app/servicios/error_service';
-import { Reporte } from '../interfaces/reporteUser';
+import { Reporte } from '../../interfaces/reporteUser';
 
 @Component({
   selector: 'app-reportes-id',

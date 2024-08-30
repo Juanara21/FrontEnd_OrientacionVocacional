@@ -5,7 +5,7 @@ import { Login } from "src/app/interfaces/login";
 import { UserService } from "src/app/servicios/user.service";
 import { ToastrService } from "ngx-toastr";
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorService } from '../servicios/error_service';
+import { ErrorService } from '../../servicios/error_service';
 import jwt_decode from 'jwt-decode';
 
 @Component({

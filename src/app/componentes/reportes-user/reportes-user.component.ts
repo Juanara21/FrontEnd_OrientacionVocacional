@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 
-import { ReportesService } from '../servicios/reportes.service';
+import { ReportesService } from '../../servicios/reportes.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AfterViewInit,  ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
@@ -9,7 +9,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from 'src/app/servicios/error_service';
-import { Reporte } from '../interfaces/reporteUser';
+import { Reporte } from '../../interfaces/reporteUser';
 @Component({
   selector: 'app-reportes-user',
   templateUrl: './reportes-user.component.html',

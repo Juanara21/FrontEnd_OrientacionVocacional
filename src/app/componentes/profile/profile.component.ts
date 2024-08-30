@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
-import { PersonasService } from '../servicios/personas.service';
+import { PersonasService } from '../../servicios/personas.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MatTableDataSource} from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorService } from 'src/app/servicios/error_service';
-import { User } from '../interfaces/user';
-import { Password } from '../interfaces/changePassword';
+import { User } from '../../interfaces/user';
+import { Password } from '../../interfaces/changePassword';
 import jwt_decode from 'jwt-decode';
 
 @Component({
